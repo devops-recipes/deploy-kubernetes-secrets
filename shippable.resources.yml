@@ -19,7 +19,7 @@ resources:
         volumes:
           - name: git-volume
             gitRepo:
-              repository: "git@github.com:devops-recipes/volume-mount-kubernetes.git"
+              repository: "https://github.com/devops-recipes/volume-mount-kubernetes.git"
 
   # config for GKE CLI
   - name: vmk_cliConfig
