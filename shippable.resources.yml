@@ -27,7 +27,6 @@ resources:
     pointer:
       sourceName: "apploadbalancer"
       method: LoadBalancer
-      namespace: shippable
       clusterName: "devops-test-cluster"
     version:
       ports:
