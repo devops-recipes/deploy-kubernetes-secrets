@@ -15,10 +15,11 @@ resources:
       volumeMounts:
         - name: git-volume
           mountPath: /data/appdata/
-      volumes:
-        - name: git-volume
-          gitRepo:
-            repository: "git@github.com:devops-recipes/volume-mount-kubernetes.git"
+      pod:
+        volumes:
+          - name: git-volume
+            gitRepo:
+              repository: "git@github.com:devops-recipes/volume-mount-kubernetes.git"
 
   # config for GKE CLI
   - name: vmk_cliConfig
