@@ -29,7 +29,7 @@ resources:
 
   - name: vmk_kube_cluster
     type: cluster
-    integration: drship_gke    #replace with your Kubernetes integration name
+    integration: dr_kube    #replace with your Kubernetes integration name
     pointer:
       sourceName: "test-cluster"
       region: us-central1-a
