@@ -1,16 +1,16 @@
 jobs:
 
-  - name: vmk_app_def
+  - name: vmk-app-def
     type: manifest
     steps:
       - IN: vmk_app_img
       - TASK: managed
 
   #Docker Cloud deploy job
-  - name: vmk_app_deploy
+  - name: vmk-app-deploy
     type: deploy
     method: replace
     steps:
       - IN: vmk_opts
-      - IN: vmk_app_def
+      - IN: vmk-app-def
       - IN: vmk_kube_cluster
