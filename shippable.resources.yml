@@ -1,0 +1,35 @@
+resources:
+# resources for the provision-gke-kubernetes-cluster app
+
+  - name: vmk_app_img
+    type: image
+    integration: drship_gcr
+    pointer:
+      sourceName: "gcr.io/fair-future-183201/vote"
+    seed:
+      versionName: "master.326771"
+
+  - name: vmk_opts
+    type: dockerOptions
+    version:
+      volumeMounts:
+        - name: git-volume
+          mountPath: /data/appdata/
+      volumes:
+        - name: git-volume
+          gitRepo:
+            repository: "git@github.com:devops-recipes/volume-mount-kubernetes.git"
+
+  # config for GKE CLI
+  - name: vmk_cliConfig
+    type: cliConfig
+    integration: drship_gke
+    pointer:
+      region: us-central1-a
+
+  - name: vmk_kube_cluster
+    type: cluster
+    integration: drship_gke    #replace with your Kubernetes integration name
+    pointer:
+      sourceName: "test-cluster"
+      region: us-central1-a
