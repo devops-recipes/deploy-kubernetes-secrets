@@ -21,12 +21,23 @@ resources:
             gitRepo:
               repository: "https://github.com/devops-recipes/volume-mount-kubernetes.git"
 
-  # config for GKE CLI
-  - name: vmk_cliConfig
-    type: cliConfig
-    integration: drship_gke
+  - name: vmk_lb
+    type: loadBalancer
+    integration: dr_kube
     pointer:
-      region: us-central1-a
+      sourceName: "apploadbalancer"
+      method: LoadBalancer
+      namespace: shippable
+      clusterName: "devops-test-cluster"
+    version:
+      ports:
+        - name: testport
+          protocol: TCP
+          port: 80
+      selector:
+        shippable.manifestName: "vmk-app-def"
+        shippable.jobName: "vmk-app-deploy"
+
 
   - name: vmk_kube_cluster
     type: cluster
