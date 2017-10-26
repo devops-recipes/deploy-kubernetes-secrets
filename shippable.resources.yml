@@ -32,5 +32,5 @@ resources:
     type: cluster
     integration: dr_kube    #replace with your Kubernetes integration name
     pointer:
-      sourceName: "test-cluster"
+      sourceName: "devops-kube-cluster"
       region: us-central1-a
