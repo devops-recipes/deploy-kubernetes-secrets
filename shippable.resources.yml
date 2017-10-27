@@ -3,7 +3,7 @@ resources:
 
   - name: vmk_app_img
     type: image
-    integration: drship_gcr
+    integration: drship_gcr # You need to replace this with your Google Cloud integration name
     pointer:
       sourceName: "gcr.io/devops-samples/basic_node"
     seed:
