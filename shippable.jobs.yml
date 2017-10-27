@@ -14,7 +14,7 @@ jobs:
   #Docker Cloud deploy job
   - name: vmk-app-deploy
     type: deploy
-    method: replace
+    method: remove
     steps:
       - IN: vmk_opts
       - IN: vmk-app-def
