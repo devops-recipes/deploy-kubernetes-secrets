@@ -3,7 +3,7 @@ resources:
 
   - name: vmk_app_img
     type: image
-    integration: volume-mount-kubernetes_gcloud # You need to replace this with your Google Cloud integration name
+    integration: drship_gcloud # You need to replace this with your Google Cloud integration name
     pointer:
       sourceName: "gcr.io/devops-samples/basic_node"
     seed:
