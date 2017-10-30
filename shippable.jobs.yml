@@ -6,7 +6,7 @@ jobs:
       - IN: vmk_app_img
       - TASK: managed
 
-  - name: vml_provision_lb
+  - name: vmk-provision-lb
     type: provision
     steps:
       - IN: vmk_lb
