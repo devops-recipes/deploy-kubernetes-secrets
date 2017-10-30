@@ -2,7 +2,7 @@ resources:
 
   - name: vmk_app_img
     type: image
-    #replace with your google cloud integration name
+    # replace drship_gcloud with your google cloud integration name
     integration: drship_gcloud
     pointer:
       # replace devops-samples with your google cloud project name
