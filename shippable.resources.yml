@@ -2,6 +2,7 @@ resources:
 
   - name: vmk_app_img
     type: image
+    #replace with your google cloud integration name
     integration: drship_gcloud
     pointer:
       # replace devops-samples with your google cloud project name
@@ -42,7 +43,8 @@ resources:
 
   - name: vmk_kube_cluster
     type: cluster
-    integration: drship_kube    #replace with your Kubernetes integration name
+    #replace with your Kubernetes integration name
+    integration: drship_kube
     pointer:
       # replace devops-test-cluster with your google container engine cluster name
       sourceName: "devops-test-cluster"
