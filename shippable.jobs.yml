@@ -6,12 +6,11 @@ jobs:
       - IN: vmk_app_img
       - TASK: managed
 
-  - name: vml_provision_lb   #friendly name for job
+  - name: vml_provision_lb
     type: provision
     steps:
       - IN: vmk_lb
 
-  #Docker Cloud deploy job
   - name: vmk-app-deploy
     type: deploy
     method: replace

@@ -1,10 +1,10 @@
 resources:
-# resources for the provision-gke-kubernetes-cluster app
 
   - name: vmk_app_img
     type: image
-    integration: drship_gcr
+    integration: drship_gcloud
     pointer:
+      # replace devops-samples with your google cloud project name
       sourceName: "gcr.io/devops-samples/basic_node"
     seed:
       versionName: "latest"
@@ -19,14 +19,17 @@ resources:
         volumes:
           - name: git-volume
             gitRepo:
+              # replace devops-recipes/volume-mount-kubernetes.git with your
+              # repository url
               repository: "https://github.com/devops-recipes/volume-mount-kubernetes.git"
 
   - name: vmk_lb
     type: loadBalancer
-    integration: dr_kube
+    integration: drship_kube
     pointer:
       sourceName: "apploadbalancer"
       method: LoadBalancer
+      # replace devops-test-cluster with your google container engine cluster name
       clusterName: "devops-test-cluster"
     version:
       ports:
@@ -37,10 +40,11 @@ resources:
         shippable.manifestName: "vmk-app-def"
         shippable.jobName: "vmk-app-deploy"
 
-
   - name: vmk_kube_cluster
     type: cluster
-    integration: dr_kube    #replace with your Kubernetes integration name
+    integration: drship_kube    #replace with your Kubernetes integration name
     pointer:
+      # replace devops-test-cluster with your google container engine cluster name
       sourceName: "devops-test-cluster"
+      # replace us-central1-a with your availability zone
       region: us-central1-a
