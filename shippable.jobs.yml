@@ -6,15 +6,35 @@ jobs:
       - IN: dks_app_img
       - TASK: managed
 
-  - name: dks-provision-lb
-    type: provision
+  # Job that provisions the GKE cluster
+  - name: create_secret
+    type: runSh
     steps:
-      - IN: dks_lb
+      - IN: dks_gitRepo
+        # manually trigger the cluster provisioning job and not on every
+        # commit to the repository
+        switch: off
+      - IN: dks_kube_cliConfig
+      - IN: dks-app-def
+      - TASK:
+        # invoke a script that provisions the GKE cluster named test-cluster
+        - script: |
+            pushd $(shipctl get_resource_state "dks_gitRepo")/Kubernetes-secrets
+              kubectl delete secret shipsecret 2>/dev/null || echo "secret does not exist"
+              kubectl create -f ./create-secret.yml
+            popd
 
   - name: dks-app-deploy
     type: deploy
     method: replace
     steps:
+      - IN: create_secret
       - IN: dks_secret_opts
       - IN: dks-app-def
+        switch: off
       - IN: dks_kube_cluster
+
+  - name: dks-provision-lb
+    type: provision
+    steps:
+      - IN: dks_lb

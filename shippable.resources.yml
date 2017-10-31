@@ -10,6 +10,24 @@ resources:
     seed:
       versionName: "latest"
 
+  - name: dks_gitRepo
+    type: gitRepo
+    # replace dr_github with your GitHub integration name
+    integration: dr_github
+    pointer:
+      # replace with source code location (e.g. GitHub) where you cloned this
+      # sample project.
+      sourceName: devops-recipes/deploy-kubernetes-secrets
+      branch: master
+
+  - name: dks_kube_cliConfig
+    type: cliConfig
+    #replace with your Kubernetes integration name
+    integration: drship_kube
+    pointer:
+      # replace us-central1-a with your availability zone
+      region: us-central1-a
+
   - name: dks_secret_opts
     type: dockerOptions
     version:
@@ -25,6 +43,7 @@ resources:
 
   - name: dks_lb
     type: loadBalancer
+    #replace with your Kubernetes integration name
     integration: drship_kube
     pointer:
       sourceName: "dks-loadbalancer"
