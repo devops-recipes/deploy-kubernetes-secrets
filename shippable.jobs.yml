@@ -19,7 +19,7 @@ jobs:
       - TASK:
         # invoke a script that provisions the GKE cluster named test-cluster
         - script: |
-            pushd $(shipctl get_resource_state "dks_gitRepo")/Kubernetes-secrets
+            pushd $(shipctl get_resource_state "dks_gitRepo")/kubernetes-secrets
               kubectl delete secret shipsecret 2>/dev/null || echo "secret does not exist"
               kubectl create -f ./create-secret.yml
             popd
