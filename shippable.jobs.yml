@@ -1,20 +1,20 @@
 jobs:
 
-  - name: vmk-app-def
+  - name: dks-app-def
     type: manifest
     steps:
-      - IN: vmk_app_img
+      - IN: dks_app_img
       - TASK: managed
 
-  - name: vmk-provision-lb
+  - name: dks-provision-lb
     type: provision
     steps:
-      - IN: vmk_lb
+      - IN: dks_lb
 
-  - name: vmk-app-deploy
+  - name: dks-app-deploy
     type: deploy
     method: replace
     steps:
-      - IN: vmk_opts
-      - IN: vmk-app-def
-      - IN: vmk_kube_cluster
+      - IN: dks_opts
+      - IN: dks-app-def
+      - IN: dks_kube_cluster

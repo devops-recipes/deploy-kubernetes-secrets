@@ -1,6 +1,6 @@
 resources:
 
-  - name: vmk_app_img
+  - name: dks_app_img
     type: image
     # replace drship_gcloud with your google cloud integration name
     integration: drship_gcloud
@@ -10,25 +10,24 @@ resources:
     seed:
       versionName: "latest"
 
-  - name: vmk_opts
+  - name: dks_secret_opts
     type: dockerOptions
     version:
       volumeMounts:
-        - name: git-volume
-          mountPath: /data/appdata/
+        - name: secret-volume
+          mountPath: "/etc/secrets"
+          readOnly: true
       pod:
         volumes:
-          - name: git-volume
-            gitRepo:
-              # replace devops-recipes/volume-mount-kubernetes.git with your
-              # repository url
-              repository: "https://github.com/devops-recipes/volume-mount-kubernetes.git"
+          - name: secret-volume
+            secret:
+              secretName: shipsecret
 
-  - name: vmk_lb
+  - name: dks_lb
     type: loadBalancer
     integration: drship_kube
     pointer:
-      sourceName: "apploadbalancer"
+      sourceName: "dks-loadbalancer"
       method: LoadBalancer
       # replace devops-test-cluster with your google container engine cluster name
       clusterName: "devops-test-cluster"
@@ -38,10 +37,10 @@ resources:
           protocol: TCP
           port: 80
       selector:
-        shippable.manifestName: "vmk-app-def"
-        shippable.jobName: "vmk-app-deploy"
+        shippable.manifestName: "dks-app-def"
+        shippable.jobName: "dks-app-deploy"
 
-  - name: vmk_kube_cluster
+  - name: dks_kube_cluster
     type: cluster
     #replace with your Kubernetes integration name
     integration: drship_kube
