@@ -15,6 +15,6 @@ jobs:
     type: deploy
     method: replace
     steps:
-      - IN: dks_opts
+      - IN: dks_secret_opts
       - IN: dks-app-def
       - IN: dks_kube_cluster
