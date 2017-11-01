@@ -23,7 +23,7 @@ resources:
 
   - name: dks_secrets
     type: integration
-    integration: drship_secrets
+    integration: drship_kube_secrets
 
   - name: dks_kube_cliConfig
     type: cliConfig
