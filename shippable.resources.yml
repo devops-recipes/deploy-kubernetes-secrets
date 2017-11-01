@@ -2,11 +2,12 @@ resources:
 
   - name: dks_app_img
     type: image
-    # replace drship_gcloud with your google cloud integration name
-    integration: drship_gcloud
+    # replace drship_dockerhub with your docker hub integration name
+    integration: drship_dockerhub
     pointer:
-      # replace devops-samples with your google cloud project name
-      sourceName: "gcr.io/devops-samples/basic_node"
+      # replace devopsrecipes/dks_node_sample_app with your docker registry
+      # repository
+      sourceName: devopsrecipes/dks_node_sample_app
     seed:
       versionName: "latest"
 
