@@ -16,10 +16,17 @@ jobs:
         switch: off
       - IN: dks_kube_cliConfig
       - IN: dks-app-def
+      - IN: drship_secrets
       - TASK:
         # invoke a script that provisions the GKE cluster named test-cluster
         - script: |
             pushd $(shipctl get_resource_state "dks_gitRepo")/kubernetes-secrets
+              # Replace placeholders in the secret yml with environment variables
+              # injected by the key-value pair integration
+              shipctl replace ./create-secret.yml
+              cat ./create-secret.yml
+
+              # Delete and create the secret
               kubectl delete secret shipsecret 2>/dev/null || echo "secret does not exist"
               kubectl create -f ./create-secret.yml
             popd
