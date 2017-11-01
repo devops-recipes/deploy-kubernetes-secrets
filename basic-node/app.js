@@ -6,10 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
-var name = require('./routes/name');
-var properties = require('./routes/properties');
-var gitrepo = require('./routes/gitrepo');
+var shipciprojects = require('./routes/shipciprojects');
 
 var app = express();
 
@@ -31,10 +28,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
-app.use('/name', name);
-app.use('/properties', properties);
-app.use('/gitrepo', gitrepo);
+app.use('/shipciprojects', shipciprojects);
 
 
 // catch 404 and forward to error handler

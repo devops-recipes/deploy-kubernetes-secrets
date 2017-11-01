@@ -1,8 +1,0 @@
-{
-    "file" : "${cwd}/output/xunit.xml",
-    "consoleOutput" : {
-        "suite" : true,
-        "test" : true,
-        "fail" : false
-    }
-}
