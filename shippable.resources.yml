@@ -20,6 +20,10 @@ resources:
       sourceName: devops-recipes/deploy-kubernetes-secrets
       branch: master
 
+  - name: dks_secrets
+    type: integration
+    integration: drship_secrets
+
   - name: dks_kube_cliConfig
     type: cliConfig
     #replace with your Kubernetes integration name
