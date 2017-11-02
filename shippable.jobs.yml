@@ -24,7 +24,7 @@ jobs:
               cat ./create-secret.yml
 
               # Delete and create the secret
-              kubectl delete secret shipsecret 2>/dev/null || echo "secret does not exist"
+              kubectl delete secret auth-token-secret 2>/dev/null || echo "secret does not exist"
               kubectl create -f ./create-secret.yml
             popd
 
