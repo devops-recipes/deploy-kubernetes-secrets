@@ -6,19 +6,16 @@ jobs:
       - IN: dks_app_img
       - TASK: managed
 
-  # Job that provisions the GKE cluster
   - name: create_secret
     type: runSh
     steps:
       - IN: dks_gitRepo
-        # manually trigger the cluster provisioning job and not on every
-        # commit to the repository
+        # manually trigger the job and not on every commit to the repository
         switch: off
       - IN: dks_kube_cliConfig
       - IN: dks-app-def
       - IN: dks_secrets
       - TASK:
-        # invoke a script that provisions the GKE cluster named test-cluster
         - script: |
             pushd $(shipctl get_resource_state "dks_gitRepo")/kubernetes-secrets
               # Replace placeholders in the secret yml with environment variables

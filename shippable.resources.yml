@@ -11,6 +11,10 @@ resources:
     seed:
       versionName: "latest"
 
+  - name: dks_secrets
+    type: integration
+    integration: drship_kube_secrets
+
   - name: dks_gitRepo
     type: gitRepo
     # replace dr_github with your GitHub integration name
@@ -20,10 +24,6 @@ resources:
       # sample project.
       sourceName: devops-recipes/deploy-kubernetes-secrets
       branch: master
-
-  - name: dks_secrets
-    type: integration
-    integration: drship_kube_secrets
 
   - name: dks_kube_cliConfig
     type: cliConfig
@@ -44,7 +44,7 @@ resources:
         volumes:
           - name: secret-volume
             secret:
-              secretName: shipsecret
+              secretName: auth-token-secret
 
   - name: dks_lb
     type: loadBalancer
