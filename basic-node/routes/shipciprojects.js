@@ -12,7 +12,7 @@ router.get('/',
 
     var auth_token_value = fs.readFileSync("/etc/secrets/AUTH_TOKEN_VALUE", 'utf8');
 
-    superagent.get('https://api.shippable.com/projects?subscriptionids=' + queryData.subid)
+    superagent.get('https://api.shippable.com/projects?subscriptionIds=' + queryData.subid)
     .set('Authorization', 'apiToken ' + auth_token_value)
     .end((err, response) => {
       if (err) {
